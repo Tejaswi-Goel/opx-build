@@ -53,6 +53,7 @@ opx-build/scripts/opx_run opx_build opx-logging
 # Build against the 2.2.1 release
 OPX_RELEASE=2.2.1 opx-build/scripts/opx_run opx_build all
 ```
+**Note:** To run a container based on Stretch, make sure the already existing Docker image named "opxhub/build" is Stretch based if not just remove it.
 
 ## Manual build of single repository
 
@@ -102,7 +103,12 @@ distributions.
 
 ```bash
 opx-build/scripts/opx_run opx_rel_pkgasm.py --dist stable \
-  -b opx-onie-installer/release_bp/OPX_dell_base.xml
+  -b opx-onie-installer/release_bp/OPX_dell_base_stretch.xml
+```
+To build a Debian Jessie-based installer change stretch to jessie.
+```bash
+opx-build/scripts/opx_run opx_rel_pkgasm.py --dist stable \
+  -b opx-onie-installer/release_bp/OPX_dell_base_jessie.xml
 ```
 
 ## Creating the opx-build Docker image
