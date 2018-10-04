@@ -13,7 +13,7 @@ repo init -u https://github.com/open-switch/opx-manifest && repo sync
 
 # build all open-source packages
 opx-build/scripts/opx_run opx_build all
-
+ 
 # assemble installer
 opx-build/scripts/opx_run opx_rel_pkgasm.py --dist unstable \
   -b opx-onie-installer/release_bp/OPX_dell_base.xml
@@ -53,6 +53,7 @@ opx-build/scripts/opx_run opx_build opx-logging
 # Build against the 2.2.1 release
 OPX_RELEASE=2.2.1 opx-build/scripts/opx_run opx_build all
 ```
+**Note:** Remove the existing "docker images" if not recently created, and if their are changes in the debian version, the above build commands will create new image.
 
 ## Manual build of single repository
 
@@ -102,8 +103,9 @@ distributions.
 
 ```bash
 opx-build/scripts/opx_run opx_rel_pkgasm.py --dist stable \
-  -b opx-onie-installer/release_bp/OPX_dell_base.xml
+  -b opx-onie-installer/release_bp/OPX_dell_base_<os_release>.xml
 ```
+**Note:** In the above command change *os_release* to jessie or stretch
 
 ## Creating the opx-build Docker image
 
